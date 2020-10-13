@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         curl \
         git \
         libssl-dev \
+        python3-dev \
         vim \
         wget \
     && rm -rf /var/lib/apt/lists/*
@@ -32,7 +33,8 @@ ENV NODE_PATH $NVM_DIR/versions/node/v$NODE_VERSION/lib/node_modules
 ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 ADD . /app
 WORKDIR /app
-RUN ["/bin/bash", "-c", "npm install"]
+RUN npm install
 RUN mkdir workspaces
+RUN [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install 13.2.0 && nvm install v11.15.0 && nvm install v12.7.0
 RUN npm run setup
 CMD /bin/bash
