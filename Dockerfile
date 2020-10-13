@@ -35,6 +35,37 @@ ADD . /app
 WORKDIR /app
 RUN npm install
 RUN mkdir workspaces
-RUN [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install 13.2.0 && nvm install v11.15.0 && nvm install v12.7.0
+RUN [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install 13.2.0 && nvm install v12.7.0 && nvm install v11.15.0 && nvm install v10
 RUN npm run setup
+RUN npm run add jose \
+  && npm run add oidc-rp \
+  && npm run add solid-auth-client \
+#  && npm run add rdflib \
+  && npm run add pane-registry \
+  && npm run add solid-namespace \
+#  && npm run add solid-ui \
+  && npm run add chat-pane \
+  && npm run add contacts-pane \
+  && npm run add folder-pane \
+  && npm run add issue-pane \
+  && npm run add meeting-pane \
+  && npm run add source-pane \
+  && npm run add activitystreams-pane \
+#  && npm run add solid-panes \
+#  && npm run add mashlib \
+  && npm run add solid-multi-rp-client \
+  && npm run add oidc-op \
+  && npm run add keychain \ 
+  && npm run add oidc-auth-manager \
+  && npm run add node-solid-ws \
+  && npm run add acl-check \
+  && npm run add solid-auth-oidc \
+#  && npm run add node-solid-server \
+  && npm run add solid-cli \
+  && npm run add solid-rest \
+  && npm run add solid-auth-cli \
+  && npm run add solid-auth-fetcher \
+  && npm run add solid-auth-tls \
+  && npm run add solid-crud-tests \
+  && npm run add web-access-control-tests
 CMD /bin/bash
