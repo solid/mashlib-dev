@@ -55,7 +55,7 @@ RUN npm run add jose \
 #  && npm run add mashlib \
   && npm run add solid-multi-rp-client \
   && npm run add oidc-op \
-  && npm run add keychain \ 
+  && npm run add keychain \
   && npm run add oidc-auth-manager \
   && npm run add node-solid-ws \
   && npm run add acl-check \
