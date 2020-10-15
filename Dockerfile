@@ -68,4 +68,5 @@ RUN npm run add jose \
   && npm run add solid-auth-tls \
   && npm run add solid-crud-tests \
   && npm run add web-access-control-tests
+RUN npx lerna bootstrap --force-local
 CMD /bin/bash
