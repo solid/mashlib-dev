@@ -1,3 +1,5 @@
+#!/bin/bash
+set -e
 for I in $(cat scripts/workspaces.ls)
 do
   cd workspaces/$I
