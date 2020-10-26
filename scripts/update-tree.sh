@@ -13,7 +13,8 @@ function updateRepo1 {
   echo Updating $1
   cd workspaces/$1
   sed -i -e 's/https...github.com./git@github.com:/g' .git/config
-  git checkout master
+  git reset master
+  git checkout -- .
   git pull
 }
 function updateRepo2 {
