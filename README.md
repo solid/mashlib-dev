@@ -122,6 +122,15 @@ This removes the dependency itself and cleans up dependencies.
 npm run delete <name-of-repo>
 ```
 
+## Release the stack
+```sh
+docker build -t mashlib-dev .
+# wait ...
+docker run -it mashlib-deb /bin/bash
+> npx lerna version
+> ...
+```
+
 ## Troubleshooting
 
 If you for some reason aren't able to get your setup working, you should double-check that Lerna actually manages to bootstrap the repositories. One way of doing this is to check node_modules in one of them and verify that the dependency that should be bootstrapped is actually a symlink to the corresponding repository (e.g. check that `workspaces/mashlib/node_modules/solid-ui` links to `workspaces/solid-ui` ). If it doesn't, it is usually because of different version (e.g. mashlib expects a newer version of solid-ui than the one you have locally). Make sure that these are aligned, then bootstrap again by running `npm start` or do it manually with `npx lerna bootstrap` (must be run in the root of the mashlib-dev repo).
