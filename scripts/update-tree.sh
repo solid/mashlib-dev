@@ -15,12 +15,14 @@ function updateRepo1 {
   sed -i -e 's/https...github.com./git@github.com:/g' .git/config
   git checkout master
   git pull
+}
+function updateRepo2 {
   rm -rf node_modules
   rm package-lock.json
   npx npm-check-updates -u
   npm install
 }
-function updateRepo2 {
+function updateRepo3 {
   npm test
   npm run build
   ( git commit -am"Update dependencies" && npm version patch && npm publish -timeout=9999999 ) || echo No change in $1
@@ -32,26 +34,26 @@ function updateRepo {
   echo Starting $1
   updateRepo1 $1
   updateRepo2 $1
+  updateRepo3 $1
 }
 
 updateRepo jose # @solid/jose (@sinonjs/text-encoding, base64url, isomorphic-webcrypto)
 updateRepo oidc-rp # @solid/oidc-rp (@solid/jose, base64url, isomorphic-webcrypto, node-fetch, standard-http-error, whatwg-url)
 
 updateRepo1 solid-auth-client # solid-auth-client (@babel/runtime, auth-header, commander, isomorphic-fetch, @solid/oidc-rp)
-killall flow
-npm install --save-dev flow-bin@0.130
-npm install --save-dev eslint-plugin-jest@23.19.0
-npm install --save-dev webpack@4
-npm install --save-dev webpack-cli@3
-updateRepo2 solid-auth-client
+# updateRepo2 solid-auth-client
+npm install @solid/oidc-rp@latest
+updateRepo3 solid-auth-client
 
 updateRepo pane-registry # pane-registry (rdflib)
 updateRepo rdflib # rdflib (jsonld, n3, xmldom)
 updateRepo solid-namespace # solid-namespace
+
 updateRepo1 solid-ui # solid-ui (pane-registry, rdflib, solid-auth-client, solid-namespace)
+updateRepo2 solid-ui
 npm install --save-dev @typescript-eslint/eslint-plugin@3
 npm install --save-dev @typescript-eslint/parser@3
-updateRepo2 solid-ui
+updateRepo3 solid-ui
 
 updateRepo activitystreams-pane
 updateRepo chat-pane # chat-pane (solid-ui)
@@ -62,16 +64,18 @@ updateRepo meeting-pane # meeting-pane (solid-ui)
 updateRepo source-pane # source-pane (solid-ui)
 
 updateRepo1 solid-panes # solid-panes (chat-pane, contacts-pane, folder-pane, issue-pane, meeting-pane, pane-registry, rdflib, solid-ui, source-pane)
+updateRepo2 solid-panes
 npm install --save-dev @typescript-eslint/eslint-plugin@3
 npm install --save-dev @typescript-eslint/parser@3
-updateRepo2 solid-panes
+updateRepo3 solid-panes
 
 updateRepo1 mashlib # mashlib (rdflib, solid-panes, solid-ui)
+updateRepo2 mashlib
 npm install --save-dev @typescript-eslint/eslint-plugin@3
 npm install --save-dev @typescript-eslint/parser@3
 npm install --save-dev webpack@4
 npm install --save-dev webpack-cli@3
-updateRepo2 mashlib
+updateRepo3 mashlib
 
 updateRepo node-solid-ws # node-solid-ws ()
 updateRepo acl-check # @solid/acl-check (rdflib, solid-namespace)
