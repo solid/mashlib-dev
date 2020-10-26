@@ -37,8 +37,8 @@ function updateRepo {
   updateRepo3 $1
 }
 
-updateRepo jose # @solid/jose (@sinonjs/text-encoding, base64url, isomorphic-webcrypto)
-updateRepo oidc-rp # @solid/oidc-rp (@solid/jose, base64url, isomorphic-webcrypto, node-fetch, standard-http-error, whatwg-url)
+# updateRepo jose # @solid/jose (@sinonjs/text-encoding, base64url, isomorphic-webcrypto)
+# updateRepo oidc-rp # @solid/oidc-rp (@solid/jose, base64url, isomorphic-webcrypto, node-fetch, standard-http-error, whatwg-url)
 
 updateRepo1 solid-auth-client # solid-auth-client (@babel/runtime, auth-header, commander, isomorphic-fetch, @solid/oidc-rp)
 # updateRepo2 solid-auth-client
