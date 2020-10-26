@@ -37,7 +37,7 @@ function updateRepo {
 updateRepo jose # @solid/jose (@sinonjs/text-encoding, base64url, isomorphic-webcrypto)
 updateRepo oidc-rp # @solid/oidc-rp (@solid/jose, base64url, isomorphic-webcrypto, node-fetch, standard-http-error, whatwg-url)
 
-updateRepo solid-auth-client # solid-auth-client (@babel/runtime, auth-header, commander, isomorphic-fetch, @solid/oidc-rp)
+updateRepo1 solid-auth-client # solid-auth-client (@babel/runtime, auth-header, commander, isomorphic-fetch, @solid/oidc-rp)
 npm install --save-dev flow-bin@0.130
 npm install --save-dev eslint-plugin-jest@23.19.0
 npm install --save-dev webpack@4
